@@ -10,10 +10,80 @@
 //       ' # '
 //       '###'
 //   pyramid(3)
-//       '  #  '
-//       ' ### '
-//       '#####'
+//       '  #  ' row 1 - 1
+//       ' ### ' row 2 - 3
+//       '#####' row 3 - 5
+//							 row 4 - 7
+//							 row 5 - 9
 
-function pyramid(n) {}
+function pyramid(totalRows, currentRow = 1) {
+	if (currentRow > totalRows) return;
+
+	const totalWidth = (totalRows * 2) - 1;
+	const stepWidth = (currentRow * 2) - 1;
+	const whitespaceWidth = (totalWidth - stepWidth) / 2;
+
+	const step = '#'.repeat(stepWidth);
+	const whitespace = ' '.repeat(whitespaceWidth);
+
+	console.log(whitespace + step + whitespace);
+
+	pyramid(totalRows, currentRow + 1);
+}
 
 module.exports = pyramid;
+
+// // NOTE: MY ORIGINAL SOLUTION
+// function pyramid(totalRows, currentRow = 1) {
+// 	if (currentRow > totalRows) return;
+//
+// 	const stepWidth = (currentRow * 2) - 1;
+// 	const totalWidth = (totalRows * 2) - 1;
+// 	const whitespaceWidth = (totalWidth - stepWidth) / 2;
+//
+// 	const step = '#'.repeat(stepWidth);
+// 	const whitespace = ' '.repeat(whitespaceWidth);
+//
+// 	console.log(whitespace + step + whitespace);
+//
+// 	pyramid(totalRows, currentRow + 1);
+// }
+
+// // NOTE: CLASS SOLUTION 1
+// function pyramid(n) {
+// 	const midpoint = Math.floor((2 * n - 1) / 2);
+//
+// 	for (let row = 0; row < n; row++) {
+// 		let level = '';
+//
+// 		for ( let column = 0; column < 2 * n - 1; column++) {
+// 			if ( midpoint - row <= column && midpoint + row >= column) {
+// 				level += '#';
+// 			} else {
+// 				level += ' ';
+// 			}
+// 		}
+// 		console.log(level);
+// 	}
+// }
+
+// // NOTE: CLASS SOLUTION 2
+// function pyramid(n, row = 0, level = '') {
+// 	if (row === n) return;
+//
+// 	if (level.length === 2 * n - 1) {
+// 		console.log(level);
+// 		return pyramid(n, row + 1);
+// 	}
+//
+// 	const midpoint = Math.floor((2 * n - 1) / 2);
+// 	let add;
+// 	if (midpoint - row <= level.length && midpoint + row >= level.length) {
+// 		add = '#';
+// 	} else {
+// 		add = ' ';
+// 	}
+//
+// 	pyramid(n, row, level + add);
+//
+// }
