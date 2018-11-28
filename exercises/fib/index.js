@@ -8,6 +8,56 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+function memoize(fn) {
+	const cache = {};
+	return function(...args) {
+		if (cache[args]) return cache[args];
+		const result = fn.apply(this, args);
+		cache[args] = result;
+		return result;
+	}
+}
+
+function fib(n) {
+	if (n < 2) return n;
+	return fib(n - 1) + fib(n - 2);
+}
+
+fib = memoize(fib);
 
 module.exports = fib;
+
+// // NOTE: MY SOLUTION 1
+// function fib(n, fibArr = [0, 1]) {
+// 	if (fibArr.length - 1 >= n) return fibArr[n];
+// 	const nextNumber = fibArr[fibArr.length - 2] + fibArr[fibArr.length - 1];
+// 	fibArr.push(nextNumber);
+// 	return fib(n, fibArr);
+// }
+
+// // NOTE: MY SOLUTION 2
+// function fib(n) {
+// 	const fibArr = [0, 1];
+// 	while (fibArr.length - 1 <= n) {
+// 		const nextNumber = fibArr[fibArr.length - 2] + fibArr[fibArr.length - 1];
+// 		fibArr.push(nextNumber);
+// 	}
+// 	return fibArr[n];
+// }
+
+// // NOTE: CLASS SOLUTION - LINEAR SOLUTION
+// function fib(n) {
+// 	const result = [0, 1];
+// 	for (let i = 2; i <= n; i++) {
+// 		const a = result[i - 1];
+// 		const b = result[i - 2];
+// 		result.push(a + b);
+// 	}
+// 	return result[n];
+// }
+
+// // NOTE: CLASS SOLUTION - Exponential
+// function fib(n) {
+// 	if (n < 2) return n;
+// 	return fib(n - 1) + fib(n - 2);
+// }

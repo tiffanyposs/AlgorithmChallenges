@@ -96,6 +96,59 @@ function steps(n) {
 }
 ```
 
+#### Fib Case
+
+Many interviews will ask the Fibonacci question. Often they will ask you
+
+This recursive solution is the most clever and often asked for in an interview, but it's not only not easy to understand but also has a worse runtime compared to the basic for loop. This might be worth pointing out in an interview setting.
+
+This solution take around 1000 ms to complete if `n` = 16. This has an `2^n` or `Exponential` runtime.
+
+```
+function fib(n) {
+	if (n < 2) return n;
+	return fib(n - 1) + fib(n - 2);
+}
+```
+
+This solution takes < 1ms to complete if `n` = 16, this is 1000 x shorter than the above example. This is a `n` or `Linear Time`:
+
+```
+function fib(n) {
+	const result = [0, 1];
+	for (let i = 2; i <= n; i++) {
+		const a = result[i - 1];
+		const b = result[i - 2];
+		result.push(a + b);
+	}
+	return result[n];
+}
+```
+##### Memoization
+
+* `memoization` - Store the arguments of each function call along with the result. If the function is called again with the same arguments, return the precomputed result, rather than running the function again.
+
+Below is a generic memoization function that will work with many problems. It prevents calling the same function with the same arguments more than once.
+
+```
+function memoize(fn) {
+	const cache = {};
+	return function(...args) {
+		if (cache[args]) return cache[args];
+		const result = fn.apply(this, args);
+		cache[args] = result;
+		return result;
+	}
+}
+
+function fib(n) {
+	if (n < 2) return n;
+	return fib(n - 1) + fib(n - 2);
+}
+
+fib = memoize(fib);
+
+```
 
 #### Space Complexity
 
