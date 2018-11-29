@@ -166,3 +166,34 @@ Like waiting in line to buy tickets, following a `First In First Out` or `FIFO` 
 #### Stack
 
 Adding a record to a stack is called `pushing` and removing is called `popping`. A `stack` follows a `First In Last Out` or `FILO` principal. "The last record in is the first record out". If you add cookies to the cookie jar you will eat the ones at the top.
+
+
+#### Linked Lists
+
+A `Linked List` is a list of nodes list together.
+
+* `Head Node` - First node of a linked list
+* `Node` - link or piece of data and reference
+* `Data` - data that the node contains
+* `Reference to Next Node` - points to the next node in the linked list
+* `Tail` - Last node of a linked list, always have a reference of *null* since three is no next node
+
+Very basic linked list example:
+
+```
+const nodeOne = {
+	data: 123
+};
+
+const nodeTwo = {
+	data: 456
+}
+
+const nodeThree = {
+	data: 789
+}
+
+nodeOne.next = nodeTwo;
+
+nodeTwo.next = nodeThree;
+```
