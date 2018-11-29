@@ -5,7 +5,7 @@
 To run you test you can run something like the below in the module you're working within
 
 ```
-$ node jest reversestring/test.js --watch
+$ jest reversestring/test.js --watch
 ```
 
 
