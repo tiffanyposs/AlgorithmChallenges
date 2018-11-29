@@ -162,3 +162,7 @@ Functionality of a JS array:
 #### Queue
 
 Like waiting in line to buy tickets, following a `First In First Out` or `FIFO` principal. The process of putting a record into a queue is called `enqueueing` or `adding`, while removing a record is called `dequeuing` or `removing`. In JavaScript, you use arrays as a queue. You might make a queue `class` and use the `.unshift` method to add to the queue and the `.pop` method to remove from the queue.
+
+#### Stack
+
+Adding a record to a stack is called `pushing` and removing is called `popping`. A `stack` follows a `First In Last Out` or `FILO` principal. "The last record in is the first record out". If you add cookies to the cookie jar you will eat the ones at the top.
