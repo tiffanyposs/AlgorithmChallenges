@@ -28,18 +28,33 @@ class LinkedList {
 		return counter;
 	}
 
+	// NOTE: In an interview setting if the interviewer
+	// is asking to make very specific methods, you
+	// could ask if we are going to to make more generic ones later
+	// in this case .getAt could have also been used for .getFirst and
+	// .getLast instead of writing new logic
+
 	getFirst() {
-		return this.head;
+		return this.getAt(0);
 	}
 
 	getLast() {
-		let node = this.head;
-		if (!node) return null;
-		while(node) {
-			if (!node.next) return node;
-			node = node.next;
-		}
+		const size = this.size();
+		return this.getAt(size - 1);
 	}
+
+	// getFirst() {
+	// 	return this.head;
+	// }
+	//
+	// getLast() {
+	// 	let node = this.head;
+	// 	if (!node) return null;
+	// 	while(node) {
+	// 		if (!node.next) return node;
+	// 		node = node.next;
+	// 	}
+	// }
 
 	clear() {
 		this.head = null;
@@ -97,6 +112,40 @@ class LinkedList {
 		const previous = this.getAt(index - 1);
 		if (!previous || !previous.next) return;
 		previous.next = previous.next.next;
+	}
+
+	insertAt(data, index) {
+		if (!this.head) {
+			this.head = new Node(data, null);
+			return;
+		}
+
+		if (index === 0) {
+			this.head = new Node(data, this.head);
+			return;
+		}
+
+		const previous = this.getAt(index - 1) || this.getLast();
+		const node = new Node(data, previous.next);
+		previous.next = node;
+	}
+
+	forEach(fn) {
+		let index = 0;
+		let node = this.head;
+		while(node) {
+			fn(node, index)
+			node = node.next;
+			index++;
+		}
+	}
+
+	*[Symbol.iterator]() {
+		let node = this.head;
+		while (node) {
+			yield node;
+			node = node.next;
+		}
 	}
 
 }

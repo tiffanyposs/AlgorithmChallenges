@@ -197,3 +197,99 @@ nodeOne.next = nodeTwo;
 
 nodeTwo.next = nodeThree;
 ```
+
+### ES6 Generators
+
+#### Examples
+
+`final = { value: 30, done: true }`
+
+```
+function *numbers() {
+  const result = 1 + 1;
+  return 20 + (yield result);
+}
+
+const generator = numbers();
+generator.next();
+const final = generator.next(10);
+
+```
+
+`numbers = [1, 2, 3, 4, 5, 6]`
+
+```
+function *list() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 5;
+  yield 6;
+}
+
+const generator2 = list();
+
+const numbers = [];
+for (let value of generator2) {
+  numbers.push(value);
+}
+
+numbers;
+
+```
+
+`values = [1, 2, 3, 4, 5, 6, 7]`
+
+```
+function *moreNumbers() {
+  yield 3;
+  yield 4;
+  yield 5;
+}
+
+function *numbers() {
+  yield 1;
+  yield 2;
+  yield* moreNumbers();
+  yield 6;
+  yield 7;
+}
+
+const generator = numbers();
+
+let values = [];
+for (let value of generator) {
+  values.push(value);
+}
+
+values;
+```
+`values = [1, 2, 4, 3]`
+
+```
+class Tree {
+  constructor(value = null, children = []) {
+    this.value = value;
+    this.children = children;
+  }
+
+  *printValues() {
+    yield this.value;
+    for (let child of this.children) {
+      yield* child.printValues();
+    }
+  }
+}
+
+const tree = new Tree(1, [
+  new Tree(2, [new Tree(4)]),
+  new Tree(3)
+]);
+
+const values = [];
+for (let value of tree.printValues()) {
+  values.push(value);
+}
+values;
+
+```
