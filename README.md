@@ -198,6 +198,37 @@ nodeOne.next = nodeTwo;
 nodeTwo.next = nodeThree;
 ```
 
+#### Trees
+
+There are parent, child relationship in a tree. Children have one parent, and parent can have many children. A node can also have a sibling, but it has to be from the same parent. You can iterate through a tree, also known as traversal of a tree.
+
+* `Breadth-First Traversal` - Iterate at each level of the tree regardless of the parents, left to right. `[0, 1, 2, 3, 4, 5, 6, 7, 8]` would be the order below.
+* `Depth-First Traversal` - You iterate left to right down each tree structure. `[0, 1, 3, 4, 2, 5, 7, 8, 6]`
+
+```
+     0
+     ^
+   1   2
+   ^   ^
+  3 4 5 6
+      ^
+     7 8
+```
+
+##### Binary Search Tree
+
+Every parent can only have 2 children, and there are a set of rules for the type of children they can have.
+
+```
+     10
+     ^
+  0      12
+  ^       ^
+-1  5   11 20
+            ^
+          17 99
+```
+
 ### ES6 Generators
 
 #### Examples
