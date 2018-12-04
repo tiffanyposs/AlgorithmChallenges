@@ -326,3 +326,44 @@ for (let value of tree.printValues()) {
 values;
 
 ```
+
+### How Would you Design Twitter (Uber, AirBnb, etc))?
+
+* There is no right answer
+* Every interviewer will expect a different answer
+* Focus is usually on the data model (if no prompt from interviewer)
+* Don't mention specific technologies
+* Draw Stuff
+* Talk
+
+#### Strategy
+
+* Identify Two Core Feature
+  * Draw on whiteboard general front-end layout with some core features, select a feature or two to go over
+* Possible Implementation
+  * Workflows within the user interface, and what should happen when a user interacts with something (click, scroll, etc)
+  * Discuss the requests to the server that will happen and the fields in the database that it might have
+* Identify and Address Difficulties
+  * What does an item look like in the database?
+  * How do you make related systems work with this piece of data
+  * How do you make a particular feature work
+* Solutions for Scaling - Interviewer might expect something general
+  * Caching -
+  * Deployment Options - Create a `Load Balancer`, randomly assign the request to one of many servers to connect to a database.
+
+
+#### Example for Twitter
+
+* Core Features
+  * Creating a Tweet
+  * Seeing Trending Tweets
+* Implementation
+  * What will happen when a user clicks the tweet button
+  * What will happen when a user submits a tweet
+* Difficulties
+  * What does a Tweet model look like
+  * How does the @mention or the # system work
+  * How to show interesting tweets at the top of a feed
+* Solutions for Scaling
+  * Cache trending tweets for a certain amount of time for a user
+  * Create a `Load Balancer`
