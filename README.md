@@ -217,7 +217,7 @@ There are parent, child relationship in a tree. Children have one parent, and pa
 
 ##### Binary Search Tree
 
-Every parent can only have 2 children, and there are a set of rules for the type of children they can have.
+Every parent can only have 2 children, and there are a set of rules for the type of children they can have. They are named properties `left` and `right`. In the below example, this is a search tree because the left property is always less than the parent and the right is always greater than. If there are no rules like this, it is simply a `Binary Tree`, without the search.
 
 ```
      10
@@ -228,6 +228,8 @@ Every parent can only have 2 children, and there are a set of rules for the type
             ^
           17 99
 ```
+
+How to add new nodes in a binary search tree is the most common interview question. Another is to validate a `Binary Search Tree`, to make sure it's valid.
 
 ### ES6 Generators
 
