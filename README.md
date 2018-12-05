@@ -367,3 +367,10 @@ values;
 * Solutions for Scaling
   * Cache trending tweets for a certain amount of time for a user
   * Create a `Load Balancer`
+
+
+### Types of Sorting
+
+* `Bubble Sort` - `n^2` easiest (smaller datasets)
+* `Selection Sort` - `n^2` easier (smaller datasets)
+* `Merge Sort` - `n*log(n)` medium (larger datasets)
